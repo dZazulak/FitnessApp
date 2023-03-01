@@ -9,8 +9,8 @@ public interface UserDAO {
     int createMaxUserId();
     User getUserById(int userId);
     User createUser(User user);
-    void usernameIsTaken(String username);
-    void deleteUser(int userId);
+    boolean usernameIsTaken(String username);
+    boolean deleteUser(int userId);
     List<User> getAllUsers();
     User checkLoginCredentials(String username, String password);
     boolean isUserAdmin(int userId);

@@ -9,7 +9,6 @@ import com.FitnessApp.util.DatabaseCreator;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOTests {
@@ -33,9 +32,9 @@ public class UserDAOTests {
     public ExpectedException expectedException = ExpectedException.none();
     @Test
     public void getUserById(){
-        User user = userDAO.getUserById(100001);
+        User user = userDAO.getUserById(3);
         System.out.println(user);
-        Assert.assertEquals(user.getUserId(), 100001);
+        Assert.assertEquals(user.getUserId(), 3);
     }
 
     @Test

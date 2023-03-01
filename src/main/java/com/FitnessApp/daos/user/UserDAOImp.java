@@ -5,7 +5,6 @@ import com.FitnessApp.customexceptions.UsernameAlreadyTaken;
 import com.FitnessApp.entities.User;
 import com.FitnessApp.util.DatabaseConnection;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
@@ -83,7 +82,7 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public void usernameIsTaken(String username) {
+    public boolean usernameIsTaken(String username) {
         try(Connection connection = DatabaseConnection.createConnection()){
             String sql = "select * from user_table where username=?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -92,17 +91,15 @@ public class UserDAOImp implements UserDAO {
             if(resultSet.next()){
                 throw new UsernameAlreadyTaken("Username is taken");
             }
-            else{
-                throw new UserNotFound("User not found");
-            }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void deleteUser(int userId) {
+    public boolean deleteUser(int userId) {
         try(Connection connection = DatabaseConnection.createConnection()){
             User user = getUserById(userId);
             String sql = "delete from user_table where user_id = ?;";
@@ -110,9 +107,13 @@ public class UserDAOImp implements UserDAO {
             preparedStatement.setInt(1, user.getUserId());
             preparedStatement.executeQuery();
         }
+        catch(UserNotFound e){
+            throw new UserNotFound("User not found");
+        }
         catch (SQLException e){
             e.printStackTrace();
         }
+        return true;
     }
 
     @Override
