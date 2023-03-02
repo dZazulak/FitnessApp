@@ -24,8 +24,7 @@ public class UserController {
         try{
             User user = this.userServices.getUserByIdService(userId);
             Gson gson = new Gson();
-            String userJson = gson.toJson(user);
-            ctx.result(userJson);
+            ctx.result(gson.toJson(user));
             ctx.status(200);
         } catch (UserNotFound e){
             ctx.result(e.getMessage());
@@ -36,8 +35,7 @@ public class UserController {
     public Handler getAllUsers = ctx ->{
         List<User> users = this.userServices.getAllUsersService();
         Gson gson = new Gson();
-        String usersJson = gson.toJson(users);
-        ctx.result(usersJson);
+        ctx.result(gson.toJson(users));
         ctx.status(200);
     };
 
@@ -46,8 +44,7 @@ public class UserController {
             Gson gson = new Gson();
             User newUser = gson.fromJson(ctx.body(), User.class);
             User createdUser = this.userServices.createUser(newUser);
-            String createdUserJson = gson.toJson(createdUser);
-            ctx.result(createdUserJson);
+            ctx.result(gson.toJson(createdUser));
             ctx.status(201);
         }
         catch (UsernameAlreadyTaken e){
@@ -62,8 +59,7 @@ public class UserController {
             Boolean deleted = this.userServices.deleteUserService(userId);
             Gson gson = new Gson();
             if(deleted){
-                String userDeleted = gson.toJson("Deleted");
-                ctx.result(userDeleted);
+                ctx.result(gson.toJson("Deleted"));
                 ctx.status(200);
             }
         }
@@ -80,8 +76,7 @@ public class UserController {
             String username = json.getUsername();
             String password = json.getPassword();
             this.userServices.checkLoginCredentialsService(username, password);
-            String loginValid = gson.toJson("Credentials valid");
-            ctx.result(loginValid);
+            ctx.result(gson.toJson("Credentials valid"));
             ctx.status(200);
         }
         catch (IllegalArgumentException | InvalidUsername e){
@@ -96,13 +91,11 @@ public class UserController {
             Boolean admin = this.userServices.isUserAdminService(userId);
             Gson gson = new Gson();
             if(admin){
-                String verified = gson.toJson("User is an admin");
-                ctx.result(verified);
+                ctx.result(gson.toJson("User is an admin"));
                 ctx.status(200);
             }
             else{
-                String unverified = gson.toJson("User is not an admin");
-                ctx.result(unverified);
+                ctx.result(gson.toJson("User is not an admin"));
                 ctx.status(200);
             }
         }
