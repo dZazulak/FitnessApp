@@ -8,10 +8,17 @@ import com.FitnessApp.services.user.UserServices;
 import com.FitnessApp.services.user.UserServicesImp;
 import io.javalin.Javalin;
 
+import java.security.AllPermission;
+
 
 public class App {
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
+            config.plugins.enableCors(cors -> {
+                cors.add(it -> {
+                    it.anyHost();
+                });
+            });
             config.plugins.enableDevLogging();
         });
 
