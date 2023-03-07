@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface UserServices {
 
-    User getUserByIdService(int userId);
+    User getUserByUsernameService(String username);
     User createUser(User user);
-    boolean deleteUserService(int userId);
+    boolean deleteUserService(String username);
     List<User> getAllUsersService();
     User checkLoginCredentialsService(String username, String password);
-    boolean isUserAdminService(int userId);
+    boolean isUserAdminService(String username);
 }

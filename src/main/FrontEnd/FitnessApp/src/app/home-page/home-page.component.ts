@@ -4,18 +4,25 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-secret',
-  templateUrl: './secret.component.html',
-  styleUrls: ['./secret.component.css']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
-export class SecretComponent implements OnInit {
-  public user: Observable<any> = this.userClient.getUsersInfo();
+export class HomePageComponent implements OnInit {
+  public user: any = this.userClient.getUserInfo();
+
+  public users: Observable<any> = this.userClient.getUsersInfo();
+
 
   constructor(private authenticationService: AuthenticationService, private userClient: UserClient){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.user);
+    console.log(this.users);
+  }
 
   logout(): void{
     this.authenticationService.logout();
   }
 }
+

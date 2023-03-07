@@ -20,9 +20,9 @@ public class UserController {
     }
 
     public Handler getUser = ctx -> {
-        int userId = Integer.parseInt(ctx.pathParam("userId"));
+        String username = ctx.pathParam("username");
         try{
-            User user = this.userServices.getUserByIdService(userId);
+            User user = this.userServices.getUserByUsernameService(username);
             Gson gson = new Gson();
             ctx.result(gson.toJson(user));
             ctx.status(200);
@@ -54,9 +54,9 @@ public class UserController {
     };
 
     public Handler deleteUser = ctx ->{
-        int userId = Integer.parseInt(ctx.pathParam("userId"));
+        String username = ctx.pathParam("username");
         try{
-            Boolean deleted = this.userServices.deleteUserService(userId);
+            Boolean deleted = this.userServices.deleteUserService(username);
             Gson gson = new Gson();
             if(deleted){
                 ctx.result(gson.toJson("Deleted"));
@@ -86,9 +86,9 @@ public class UserController {
     };
 
     public Handler isAdmin = ctx ->{
-        int userId = Integer.parseInt(ctx.pathParam("userId"));
+        String username = ctx.pathParam("username");
         try {
-            Boolean admin = this.userServices.isUserAdminService(userId);
+            Boolean admin = this.userServices.isUserAdminService(username);
             Gson gson = new Gson();
             if(admin){
                 ctx.result(gson.toJson("User is an admin"));

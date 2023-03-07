@@ -7,13 +7,13 @@ import java.util.List;
 public interface UserDAO {
 
     int createMaxUserId();
-    User getUserById(int userId);
+    User getUserByUsername(String username);
     User createUser(User user);
     boolean usernameIsTaken(String username);
-    boolean deleteUser(int userId);
+    boolean deleteUser(String username);
     List<User> getAllUsers();
     User checkLoginCredentials(String username, String password);
-    boolean isUserAdmin(int userId);
+    boolean isUserAdmin(String username);
 
 
 }

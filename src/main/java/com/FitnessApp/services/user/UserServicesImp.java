@@ -16,9 +16,9 @@ public class UserServicesImp implements UserServices{
     }
 
     @Override
-    public User getUserByIdService(int userId) {
+    public User getUserByUsernameService(String username) {
         try{
-            return this.userDAO.getUserById(userId);
+            return this.userDAO.getUserByUsername(username);
         }
         catch (UserNotFound e){
             throw new UserNotFound("User not found");
@@ -40,10 +40,10 @@ public class UserServicesImp implements UserServices{
     }
 
     @Override
-    public boolean deleteUserService(int userId) {
+    public boolean deleteUserService(String username) {
         try{
-            userDAO.getUserById(userId);
-            return userDAO.deleteUser(userId);
+            userDAO.getUserByUsername(username);
+            return userDAO.deleteUser(username);
         }
         catch (UserNotFound e){
             throw new UserNotFound("User not found");
@@ -80,10 +80,10 @@ public class UserServicesImp implements UserServices{
     }
 
     @Override
-    public boolean isUserAdminService(int userId) {
+    public boolean isUserAdminService(String username) {
         try{
-            userDAO.getUserById(userId);
-            return userDAO.isUserAdmin(userId);
+            userDAO.getUserByUsername(username);
+            return userDAO.isUserAdmin(username);
         }
         catch(UserNotFound e){
             throw new UserNotFound("User not found");

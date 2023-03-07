@@ -11,16 +11,17 @@ import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SecretComponent } from './secret/secret.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SecretComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

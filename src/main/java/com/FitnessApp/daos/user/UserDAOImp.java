@@ -33,11 +33,11 @@ public class UserDAOImp implements UserDAO {
     }
     int user_id_counter = this.createMaxUserId();
     @Override
-    public User getUserById(int userId) {
+    public User getUserByUsername(String username) {
         try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select * from user_table where user_id=?;";
+            String sql = "select * from user_table where username=?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 User user = new User();
@@ -99,12 +99,12 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public boolean deleteUser(int userId) {
+    public boolean deleteUser(String username) {
         try(Connection connection = DatabaseConnection.createConnection()){
-            User user = getUserById(userId);
-            String sql = "delete from user_table where user_id = ?;";
+            User user = getUserByUsername(username);
+            String sql = "delete from user_table where username = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, user.getUserId());
+            preparedStatement.setString(1, user.getUsername());
             preparedStatement.executeQuery();
         }
         catch(UserNotFound e){
@@ -169,11 +169,11 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public boolean isUserAdmin(int userId) {
+    public boolean isUserAdmin(String username) {
         try(Connection connection = DatabaseConnection.createConnection()){
-            String sql = "select isAdmin from user_table where user_id=?;";
+            String sql = "select isAdmin from user_table where username=?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 return resultSet.getBoolean("isAdmin");

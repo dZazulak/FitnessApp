@@ -1,4 +1,7 @@
 <p *ngFor="let item of user | async">
-  {{item.firstName}} {{item.lastName}}
+  {{[user.username]}}
 </p>
 <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+<p *ngFor="let item of users | async">
+  {{item.firstName}} {{item.lastName}}
+</p>

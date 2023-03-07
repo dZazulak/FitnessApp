@@ -22,7 +22,7 @@ public class UserServiceTests {
     public void getBadUserId(){
         expectedException.expect(UserNotFound.class);
         expectedException.expectMessage("User not found");
-        userServices.getUserByIdService(500000000);
+        userServices.getUserByUsernameService("NoUser");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class UserServiceTests {
     public void noUserToDelete(){
         expectedException.expect(UserNotFound.class);
         expectedException.expectMessage("User not found");
-        userServices.deleteUserService(500000000);
+        userServices.deleteUserService("NoUser");
     }
 
     @Test
@@ -75,6 +75,6 @@ public class UserServiceTests {
     public void badUserIdForAdmin(){
         expectedException.expect(UserNotFound.class);
         expectedException.expectMessage("User not found");
-        userServices.isUserAdminService(500000000);
+        userServices.isUserAdminService("NoUser");
     }
 }

@@ -32,7 +32,7 @@ public class UserDAOTests {
     public ExpectedException expectedException = ExpectedException.none();
     @Test
     public void getUserById(){
-        User user = userDAO.getUserById(3);
+        User user = userDAO.getUserByUsername("Hash");
         System.out.println(user);
         Assert.assertEquals(user.getUserId(), 3);
     }
@@ -52,10 +52,10 @@ public class UserDAOTests {
     }
     @Test
     public void deleteUserById(){
-        userDAO.deleteUser(100002);
+        userDAO.deleteUser("username2");
         expectedException.expect(UserNotFound.class);
         expectedException.expectMessage("User not found");
-        userDAO.getUserById(100002);
+        userDAO.getUserByUsername("username2");
     }
 
     @Test
@@ -69,7 +69,7 @@ public class UserDAOTests {
 
     @Test
     public void checkLoginCredentials(){
-        User user = userDAO.getUserById(100001);
+        User user = userDAO.getUserByUsername("username1");
         User login = userDAO.checkLoginCredentials(user.getUsername(), user.getPassword());
         System.out.println(login);
         Assert.assertEquals(login.getUserId(), 100001);
@@ -77,8 +77,8 @@ public class UserDAOTests {
 
     @Test
     public void isAdmin(){
-        User user = userDAO.getUserById(100001);
-        boolean admin = userDAO.isUserAdmin(user.getUserId());
+        User user = userDAO.getUserByUsername("username1");
+        boolean admin = userDAO.isUserAdmin(user.getUsername());
         Assert.assertTrue(admin);
     }
 }
