@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import io.javalin.http.Handler;
 import com.FitnessApp.services.user.UserServices;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,10 +22,12 @@ public class UserController {
 
     public Handler getUser = ctx -> {
         String username = ctx.pathParam("username");
+        ArrayList<User> userArrayList = new ArrayList<>();
         try{
             User user = this.userServices.getUserByUsernameService(username);
             Gson gson = new Gson();
-            ctx.result(gson.toJson(user));
+            userArrayList.add(user);
+            ctx.result(gson.toJson(userArrayList));
             ctx.status(200);
         } catch (UserNotFound e){
             ctx.result(e.getMessage());

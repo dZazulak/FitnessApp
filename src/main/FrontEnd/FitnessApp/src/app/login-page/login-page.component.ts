@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
@@ -10,7 +11,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginPageComponent {
   public loginForm: FormGroup;
 
-  constructor(private authenticatonService: AuthenticationService){}
+  constructor(private authenticatonService: AuthenticationService, private http: HttpClient){}
 
   ngOnInit(): void {
       this.loginForm = new FormGroup({
@@ -25,5 +26,4 @@ export class LoginPageComponent {
       this.loginForm.get('password')!.value,
     );
   }
-
 }

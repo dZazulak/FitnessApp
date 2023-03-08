@@ -1,7 +1,6 @@
-<p *ngFor="let item of user | async">
-  {{[user.username]}}
-</p>
-<button mat-raised-button color="primary" (click)="logout()">Logout</button>
-<p *ngFor="let item of users | async">
-  {{item.firstName}} {{item.lastName}}
-</p>
+<app-taskbar></app-taskbar>
+<div id="topBar">
+  <h1 *ngFor="let item of user | async" id="welcomeMessage">
+    <b>Welcome {{item.firstName}} {{item.lastName}}</b>
+  </h1>
+</div>
