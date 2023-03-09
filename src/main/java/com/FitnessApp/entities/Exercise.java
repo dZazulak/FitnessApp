@@ -11,6 +11,7 @@ public class Exercise {
     private String exerciseType;
     private String description;
 
+    public Exercise(){}
     public Exercise(int exerciseId, int userCreatedId, int premadeId, String exerciseName, String exerciseType, String description) {
         this.exerciseId = exerciseId;
         this.userCreatedId = userCreatedId;
