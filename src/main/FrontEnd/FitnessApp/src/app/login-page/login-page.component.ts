@@ -11,7 +11,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginPageComponent {
   public loginForm: FormGroup;
 
-  constructor(private authenticatonService: AuthenticationService, private http: HttpClient){}
+  constructor(private authenticatonService: AuthenticationService){}
 
   ngOnInit(): void {
       this.loginForm = new FormGroup({
