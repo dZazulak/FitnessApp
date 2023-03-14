@@ -18,6 +18,7 @@ public class DatabaseCreator {
             "insert into exercise_table values('100001', '100001', '0', 'Lat Pull Downs', 'Back', 'This will be so I can focus on the back muscles');" +
             "insert into exercise_table values('100002', '100002', '0', 'Chest press', 'Chest', 'I want to make my chest stronger');" +
             "insert into exercise_table values('100003', '0', '100001', 'Bicep Curls', 'Biceps', 'This exercise will use your biceps to lift weights');" +
+            "insert into exercise_table values('100005', '0', '100001', 'Bicep Curls', 'Biceps', 'This exercise will use your biceps to lift weights');" +
             "insert into exercise_table values('100004', '0', '100002', 'Leg press', 'Legs', 'This exercise will use your legs to lift weights');";
             Statement statement = connection.createStatement();
             statement.executeQuery(sql);

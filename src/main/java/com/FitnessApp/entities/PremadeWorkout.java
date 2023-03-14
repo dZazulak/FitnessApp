@@ -8,6 +8,7 @@ public class PremadeWorkout {
     private String workoutName;
     private String description;
 
+    public PremadeWorkout(){}
     public PremadeWorkout(int premadeId, String workoutName, String description) {
         this.premadeId = premadeId;
         this.workoutName = workoutName;

@@ -41,11 +41,11 @@ public class App {
         ExerciseServices exerciseServices = new ExerciseServicesImp(exerciseDAO);
         ExerciseController exerciseController = new ExerciseController(exerciseServices);
 
-        app.get("/exercise/{exerciseId}/{premadeId}", exerciseController.getExerciseByPremadeId);
-        app.get("/exercise/{exerciseId}/{userCreatedId}", exerciseController.getExerciseByUserCreatedId);
+        app.get("/pm_exercise/{exerciseId}/{premadeId}", exerciseController.getExerciseByPremadeId);
+        app.get("/uc_exercise/{exerciseId}/{userCreatedId}", exerciseController.getExerciseByUserCreatedId);
         app.post("/create/exercise", exerciseController.createExercise);
         app.put("/edit/exercise", exerciseController.editExercise);
-        app.delete("/delete/exercise/{exerciseId}/{premadeId}", exerciseController.deleteExercise);
+        app.delete("/delete/exercise/{exerciseId}/{userCreatedId}", exerciseController.deleteExercise);
 
 
         app.start();
