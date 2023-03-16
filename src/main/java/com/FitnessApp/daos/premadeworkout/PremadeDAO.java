@@ -11,4 +11,6 @@ public interface PremadeDAO {
 
     PremadeWorkout getPremadeWorkout(int premadeId);
 
+    String userSelectPremadeWorkout(int premadeId, String username);
+
 }

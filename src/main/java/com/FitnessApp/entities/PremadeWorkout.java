@@ -7,12 +7,15 @@ public class PremadeWorkout {
     private int premadeId;
     private String workoutName;
     private String description;
+    private String username;
 
     public PremadeWorkout(){}
-    public PremadeWorkout(int premadeId, String workoutName, String description) {
+    public PremadeWorkout(int premadeId, String workoutName, String description, String username) {
         this.premadeId = premadeId;
         this.workoutName = workoutName;
         this.description = description;
+        this.username = username;
+
     }
 
     public int getPremadeId() {
@@ -39,17 +42,25 @@ public class PremadeWorkout {
         this.description = description;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PremadeWorkout that = (PremadeWorkout) o;
-        return getPremadeId() == that.getPremadeId() && getWorkoutName().equals(that.getWorkoutName()) && Objects.equals(getDescription(), that.getDescription());
+        return getPremadeId() == that.getPremadeId() && Objects.equals(getWorkoutName(), that.getWorkoutName()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getUsername(), that.getUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPremadeId(), getWorkoutName(), getDescription());
+        return Objects.hash(getPremadeId(), getWorkoutName(), getDescription(), getUsername());
     }
 
     @Override
@@ -58,6 +69,7 @@ public class PremadeWorkout {
                 "premadeId=" + premadeId +
                 ", workoutName='" + workoutName + '\'' +
                 ", description='" + description + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

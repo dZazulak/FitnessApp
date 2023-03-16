@@ -3,7 +3,6 @@ package com.FitnessApp.daos.premadeworkout;
 import com.FitnessApp.customexceptions.PremadeWorkoutNotFound;
 import com.FitnessApp.entities.Exercise;
 import com.FitnessApp.entities.PremadeWorkout;
-import com.FitnessApp.entities.User;
 import com.FitnessApp.util.DatabaseConnection;
 
 import java.sql.*;
@@ -22,8 +21,8 @@ public class PremadeDAOImp implements PremadeDAO {
             while(resultSet.next()){
                 Exercise exercise = new Exercise();
                 exercise.setExerciseId(resultSet.getInt("exercise_id"));
-                exercise.setPremadeId(resultSet.getInt("premade_id"));
                 exercise.setUserCreatedId(0);
+                exercise.setPremadeId(resultSet.getInt("premade_id"));
                 exercise.setExerciseName(resultSet.getString("exercise_name"));
                 exercise.setExerciseType(resultSet.getString("exercise_type"));
                 exercise.setDescription(resultSet.getString("description"));
@@ -52,6 +51,31 @@ public class PremadeDAOImp implements PremadeDAO {
                 premadeWorkout.setDescription(resultSet.getString("description"));
 
                 return premadeWorkout;
+            }
+            else{
+                throw new PremadeWorkoutNotFound("Premade Workout not found");
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public String userSelectPremadeWorkout(int premadeId, String username) {
+        try(Connection connection = DatabaseConnection.createConnection()){
+            String updateSql = "update pm_wkout_table set username=? where premade_id=?";
+            PreparedStatement pS = connection.prepareStatement(updateSql);
+            pS.setString(1, username);
+            pS.setInt(2, premadeId);
+            pS.execute();
+            String sql = "select username from pm_wkout_table where premade_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, premadeId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getString(1);
             }
             else{
                 throw new PremadeWorkoutNotFound("Premade Workout not found");

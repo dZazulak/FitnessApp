@@ -7,14 +7,15 @@ public class UserCreatedWorkout {
 
     private int userCreatedId;
     private String workoutName;
-    private int userId;
+    private String username;
     private String description;
     private String dateCreated;
 
-    public UserCreatedWorkout(int userCreatedId, String workoutName, int userId, String description, String dateCreated) {
+    public UserCreatedWorkout(){}
+    public UserCreatedWorkout(int userCreatedId, String workoutName, String username, String description, String dateCreated) {
         this.userCreatedId = userCreatedId;
         this.workoutName = workoutName;
-        this.userId = userId;
+        this.username = username;
         this.description = description;
         this.dateCreated = dateCreated;
     }
@@ -35,12 +36,12 @@ public class UserCreatedWorkout {
         this.workoutName = workoutName;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDescription() {
@@ -64,12 +65,12 @@ public class UserCreatedWorkout {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCreatedWorkout that = (UserCreatedWorkout) o;
-        return getUserCreatedId() == that.getUserCreatedId() && getUserId() == that.getUserId() && getWorkoutName().equals(that.getWorkoutName()) && Objects.equals(getDescription(), that.getDescription()) && getDateCreated().equals(that.getDateCreated());
+        return getUserCreatedId() == that.getUserCreatedId() && Objects.equals(getUsername(), that.getUsername()) && getWorkoutName().equals(that.getWorkoutName()) && Objects.equals(getDescription(), that.getDescription()) && getDateCreated().equals(that.getDateCreated());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserCreatedId(), getWorkoutName(), getUserId(), getDescription(), getDateCreated());
+        return Objects.hash(getUserCreatedId(), getWorkoutName(), getUsername(), getDescription(), getDateCreated());
     }
 
     @Override
@@ -77,7 +78,7 @@ public class UserCreatedWorkout {
         return "UserCreatedWorkout{" +
                 "userCreatedId=" + userCreatedId +
                 ", workoutName='" + workoutName + '\'' +
-                ", userId=" + userId +
+                ", username=" + username +
                 ", description='" + description + '\'' +
                 ", dateCreated='" + dateCreated + '\'' +
                 '}';

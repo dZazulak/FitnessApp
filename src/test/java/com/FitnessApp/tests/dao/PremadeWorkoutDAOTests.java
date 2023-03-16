@@ -41,5 +41,12 @@ public class PremadeWorkoutDAOTests {
         Assert.assertEquals(pm.getWorkoutName(), "Complete Arms Workout");
     }
 
+    @Test
+    public void userSelectPremadeWorkout(){
+        String pm = premadeDAO.userSelectPremadeWorkout(100001, "username2");
+        System.out.println(pm);
+        Assert.assertEquals("username2", pm);
+    }
+
 
 }
