@@ -12,4 +12,7 @@ public interface PremadeServices {
     PremadeWorkout getPremadeWorkoutService(int premadeId);
 
     String userSelectPremadeWorkoutService(int premadeId, String username);
+
+    String userDeselectPremadeWorkoutService(int premadeId, String username);
+
 }

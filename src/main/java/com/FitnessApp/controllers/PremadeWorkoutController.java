@@ -58,4 +58,17 @@ public class PremadeWorkoutController {
             ctx.status(404);
         }
     };
+
+    public Handler userDeselectsPremadeWorkout = ctx -> {
+        try {
+            Gson gson = new Gson();
+            PremadeWorkout json = gson.fromJson(ctx.body(), PremadeWorkout.class);
+            String selectedUser = this.premadeServices.userDeselectPremadeWorkoutService(json.getPremadeId(), json.getUsername());
+            ctx.result(gson.toJson(selectedUser));
+            ctx.status(200);
+        } catch (PremadeWorkoutNotFound | UserNotFound e) {
+            ctx.result(e.getMessage());
+            ctx.status(404);
+        }
+    };
 }

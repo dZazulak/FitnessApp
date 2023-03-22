@@ -20,7 +20,8 @@ public class DatabaseCreator {
             "insert into exercise_table values('100002', '100002', '0', 'Chest press', 'Chest', 'I want to make my chest stronger');" +
             "insert into exercise_table values('100003', '0', '100001', 'Bicep Curls', 'Biceps', 'This exercise will use your biceps to lift weights');" +
             "insert into exercise_table values('100005', '0', '100001', 'Bicep Curls', 'Biceps', 'This exercise will use your biceps to lift weights');" +
-            "insert into exercise_table values('100004', '0', '100002', 'Leg press', 'Legs', 'This exercise will use your legs to lift weights');";
+            "insert into exercise_table values('100004', '0', '100002', 'Leg press', 'Legs', 'This exercise will use your legs to lift weights');" +
+            "insert into premade_user_conj_table values('username2', '100002');";
             Statement statement = connection.createStatement();
             statement.executeQuery(sql);
         }
@@ -32,6 +33,7 @@ public class DatabaseCreator {
     public static void depopulate_tables(){
         try(Connection connection = DatabaseConnection.createConnection()){
             String sql = "delete from exercise_table where exercise_id > 100000;" +
+            "delete from premade_user_conj_table where username='username2';"+
             "delete from pm_wkout_table where premade_id > 100000;" +
             "delete from uc_wkout_table where usercreated_id > 100000;" +
             "delete from user_table where user_id > 100000;";

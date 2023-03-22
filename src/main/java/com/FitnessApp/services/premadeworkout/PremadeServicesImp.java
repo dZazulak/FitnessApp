@@ -47,7 +47,28 @@ public class PremadeServicesImp implements PremadeServices {
         try{
             if(!username.isBlank()){
                 userDAO.getUserByUsername(username);
+                premadeDAO.getPremadeWorkout(premadeId);
                 return premadeDAO.userSelectPremadeWorkout(premadeId, username);
+            }
+            else{
+                throw new UserNotFound("User not found");
+            }
+        }
+        catch (PremadeWorkoutNotFound e ){
+            throw new PremadeWorkoutNotFound("Premade Workout not found");
+        }
+        catch (UserNotFound e){
+            throw new UserNotFound("User not found");
+        }
+    }
+
+    @Override
+    public String userDeselectPremadeWorkoutService(int premadeId, String username) {
+        try{
+            if(!username.isBlank()){
+                userDAO.getUserByUsername(username);
+                premadeDAO.getPremadeWorkout(premadeId);
+                return premadeDAO.userDeselectPremadeWorkout(premadeId, username);
             }
             else{
                 throw new UserNotFound("User not found");

@@ -56,4 +56,25 @@ public class PremadeWorkoutServiceTests {
         expectedException.expectMessage("Premade Workout not found");
         premadeServices.userSelectPremadeWorkoutService(500000, "kaytoups");
     }
+
+    @Test
+    public void usernameBlankDeselectingPremadeWorkout(){
+        expectedException.expect(UserNotFound.class);
+        expectedException.expectMessage("User not found");
+        premadeServices.userDeselectPremadeWorkoutService(0, "");
+    }
+
+    @Test
+    public void badUsernameDeselectingPremadeWorkout(){
+        expectedException.expect(UserNotFound.class);
+        expectedException.expectMessage("User not found");
+        premadeServices.userDeselectPremadeWorkoutService(0, "FakeUser");
+    }
+
+    @Test
+    public void badIdForDeselectingPremadeWorkout(){
+        expectedException.expect(PremadeWorkoutNotFound.class);
+        expectedException.expectMessage("Premade Workout not found");
+        premadeServices.userDeselectPremadeWorkoutService(500000, "kaytoups");
+    }
 }

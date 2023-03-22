@@ -63,7 +63,8 @@ public class App {
 
         app.get("/pm_workout_exercises/{premadeId}", premadeController.getAllExercises);
         app.get("/pm_workout/{premadeId}", premadeController.getPremadeWorkout);
-        app.patch("/pm_workout/select", premadeController.userSelectsPremadeWorkout);
+        app.post("/pm_workout/select", premadeController.userSelectsPremadeWorkout);
+        app.delete("/pm_workout/deselect", premadeController.userDeselectsPremadeWorkout);
 
         UserCreatedDAO userCreatedDAO = new UserCreatedDAOImp();
         UserCreatedServices userCreatedServices = new UserCreatedServicesImp(userCreatedDAO, userDAO);

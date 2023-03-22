@@ -48,5 +48,11 @@ public class PremadeWorkoutDAOTests {
         Assert.assertEquals("username2", pm);
     }
 
+    @Test
+    public void userDeselectPremadeWorkout(){
+        String pm = premadeDAO.userDeselectPremadeWorkout(100002, "username2");
+        System.out.println(pm);
+        Assert.assertEquals("Workout Deselected", pm);
+    }
 
 }
