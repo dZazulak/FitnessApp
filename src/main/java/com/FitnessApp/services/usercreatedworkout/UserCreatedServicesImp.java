@@ -1,12 +1,10 @@
 package com.FitnessApp.services.usercreatedworkout;
 
-import com.FitnessApp.customexceptions.PremadeWorkoutNotFound;
 import com.FitnessApp.customexceptions.UserCreatedWorkoutNotFound;
 import com.FitnessApp.customexceptions.UserNotFound;
 import com.FitnessApp.customexceptions.WorkoutInformationIsNotFilledOut;
 import com.FitnessApp.daos.user.UserDAO;
 import com.FitnessApp.daos.usercreatedworkout.UserCreatedDAO;
-import com.FitnessApp.daos.usercreatedworkout.UserCreatedDAOImp;
 import com.FitnessApp.entities.Exercise;
 import com.FitnessApp.entities.UserCreatedWorkout;
 
@@ -60,6 +58,17 @@ public class UserCreatedServicesImp implements UserCreatedServices {
         }
         catch (UserCreatedWorkoutNotFound e){
             throw new UserCreatedWorkoutNotFound("User Created Workout not found");
+        }
+    }
+
+    @Override
+    public boolean deleteWorkout(UserCreatedWorkout userCreatedWorkout) {
+        try{
+            userCreatedDAO.getUserCreatedWorkout(userCreatedWorkout.getUserCreatedId());
+            return userCreatedDAO.deleteWorkout(userCreatedWorkout);
+        }
+        catch (UserCreatedWorkoutNotFound e){
+            throw new UserNotFound("User Created Workout not found");
         }
     }
 }

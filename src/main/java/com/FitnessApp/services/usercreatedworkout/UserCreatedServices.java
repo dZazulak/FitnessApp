@@ -9,4 +9,5 @@ public interface UserCreatedServices {
     UserCreatedWorkout createNewWorkout(UserCreatedWorkout userCreatedWorkout);
     List<Exercise> getAllExercisesByUserCreatedId(int userCreatedId);
     UserCreatedWorkout getUserCreatedWorkout(int userCreatedId);
+    boolean deleteWorkout(UserCreatedWorkout userCreatedWorkout);
 }

@@ -78,4 +78,11 @@ public class UserCreatedServiceTests {
         userCreatedServices.getUserCreatedWorkout(500000);
     }
 
+    @Test
+    public void badIdForDeleteWorkout(){
+        expectedException.expect(UserCreatedWorkoutNotFound.class);
+        expectedException.expectMessage("User Created Workout not found");
+        userCreatedServices.getUserCreatedWorkout(500000);
+    }
+
 }
