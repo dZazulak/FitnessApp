@@ -15,4 +15,6 @@ public interface UserCreatedDAO {
 
     UserCreatedWorkout getUserCreatedWorkout(int userCreatedId);
 
+    boolean deleteWorkout(UserCreatedWorkout userCreatedWorkout);
+
 }

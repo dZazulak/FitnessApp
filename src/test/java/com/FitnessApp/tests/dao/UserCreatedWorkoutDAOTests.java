@@ -1,5 +1,6 @@
 package com.FitnessApp.tests.dao;
 
+import com.FitnessApp.customexceptions.UserCreatedWorkoutNotFound;
 import com.FitnessApp.daos.usercreatedworkout.UserCreatedDAO;
 import com.FitnessApp.daos.usercreatedworkout.UserCreatedDAOImp;
 import com.FitnessApp.entities.Exercise;
@@ -47,5 +48,14 @@ public class UserCreatedWorkoutDAOTests {
     public void getUserCreatedWorkout(){
         UserCreatedWorkout pm = userCreatedDAO.getUserCreatedWorkout(100001);
         Assert.assertEquals(pm.getWorkoutName(), "Back and Bi");
+    }
+
+    @Test
+    public void deleteUserCreatedWorkout(){
+        expectedException.expect(UserCreatedWorkoutNotFound.class);
+        expectedException.expectMessage("User Created Workout not found");
+        UserCreatedWorkout workout = userCreatedDAO.getUserCreatedWorkout(100002);
+        userCreatedDAO.deleteWorkout(workout);
+        userCreatedDAO.getUserCreatedWorkout(100002);
     }
 }
