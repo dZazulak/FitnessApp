@@ -107,13 +107,12 @@ public class UserCreatedDAOImp implements UserCreatedDAO {
             UserCreatedWorkout workout = getUserCreatedWorkout(userCreatedWorkout.getUserCreatedId());
             String sql = "delete from uc_wkout_table where usercreated_id = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, userCreatedWorkout.getUserCreatedId());
+            preparedStatement.setInt(1, workout.getUserCreatedId());
             preparedStatement.executeQuery();
         } catch (UserCreatedWorkoutNotFound e) {
             throw new UserCreatedWorkoutNotFound("User Created Workout not found");
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
         return true;
     }

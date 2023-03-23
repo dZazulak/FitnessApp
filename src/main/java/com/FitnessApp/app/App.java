@@ -70,6 +70,11 @@ public class App {
         UserCreatedServices userCreatedServices = new UserCreatedServicesImp(userCreatedDAO, userDAO);
         UserCreatedWorkoutController userCreatedController = new UserCreatedWorkoutController(userCreatedServices);
 
+        app.get("/uc_workout_exercises/{userCreatedId}", userCreatedController.getAllExercises);
+        app.get("/uc_workout/{userCreatedId}", userCreatedController.getUserCreatedWorkout);
+        app.post("/create/uc_workout", userCreatedController.createWorkout);
+        app.delete("/delete/uc_workout", userCreatedController.deleteWorkout);
+
         app.start();
     }
 }
