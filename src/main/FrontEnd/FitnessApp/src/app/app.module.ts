@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TaskbarComponent } from './taskbar/taskbar.component';
+import { PremadeWorkoutPageComponent } from './premade-workout-page/premade-workout-page.component';
+import { CustomWorkoutPageComponent } from './custom-workout-page/custom-workout-page.component';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { TaskbarComponent } from './taskbar/taskbar.component';
     LoginPageComponent,
     RegisterPageComponent,
     HomePageComponent,
-    TaskbarComponent
+    TaskbarComponent,
+    PremadeWorkoutPageComponent,
+    CustomWorkoutPageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,7 @@ import { TaskbarComponent } from './taskbar/taskbar.component';
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   providers: [
