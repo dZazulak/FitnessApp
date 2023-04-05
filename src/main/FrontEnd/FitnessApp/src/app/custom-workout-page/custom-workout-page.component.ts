@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class CustomWorkoutPageComponent {
 
+  columnDefs = [{ field: "Name" }, { field: "Description" }];
+
+  rowData = [
+    { Name: "Toyota", Description: "Celica"},
+    { Name: "Ford", Description: "Mondeo"},
+    { Name: "Porsche", Description: "Boxter"}
+  ];
 }
